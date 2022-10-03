@@ -6,6 +6,7 @@ import (
 	"os"
 	"strings"
 	"text/tabwriter"
+	"unicode/utf8"
 )
 
 // Tabby is returned when New() is called.
@@ -46,7 +47,7 @@ func (t *Tabby) Print() {
 func (t *Tabby) addSeparator(args []interface{}) {
 	var b bytes.Buffer
 	for idx, arg := range args {
-		length := len(fmt.Sprintf("%v", arg))
+		length := utf8.RuneCountInString(fmt.Sprintf("%v", arg))
 		b.WriteString(strings.Repeat("-", length))
 		if idx+1 != len(args) {
 			// Add a tab as long as its not the last column
