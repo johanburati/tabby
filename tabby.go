@@ -65,7 +65,7 @@ func (t *Tabby) buildFormatString(args []interface{}) string {
 		b.WriteString("%v")
 		if idx+1 != len(args) {
 			// Add a tab as long as its not the last column
-			b.WriteString("\t")
+			b.WriteString(".")
 		}
 	}
 	b.WriteString("\n")
